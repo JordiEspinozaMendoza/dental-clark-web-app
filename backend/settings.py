@@ -27,7 +27,7 @@ SECRET_KEY = 'w$msnmv-+&1-#cxna8#l-3d9+!k6812yqn8_l-52lh4t^i7#f7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','dentalclark.herokuapp.com' ]
 
 
 # Application definition

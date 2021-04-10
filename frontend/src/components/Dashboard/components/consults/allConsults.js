@@ -100,9 +100,7 @@ export default function Consults(props) {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : consults.length == 0 ? (
-        <Message variant="warning">No hay citas en esta fecha</Message>
-      ) : (
+      ) : consults && consults.length > 0 ? (
         <Table striped bordered hover responsive className="table-sm mt-3">
           <thead>
             <tr>
@@ -172,6 +170,8 @@ export default function Consults(props) {
             ))}
           </tbody>
         </Table>
+      ) : (
+        <Message variant="warning">No hay citas en esta fecha</Message>
       )}
       <ModalConsult
         consult={myConsult}

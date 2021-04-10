@@ -1,4 +1,4 @@
-import { Row, Col, Image, Button, Form, ButtonGroup } from "react-bootstrap";
+import { Row, Col, Nav, Button, Form, ButtonGroup } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,51 +19,54 @@ export default function Dashboard({ history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [history, userInfo]);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setScreenWidth(window.innerWidth);
+      console.log(screenWidth);
+    });
+  }, []);
   return (
     <>
       <Row style={{ height: "auto" }}>
-        <Col
-          md={3}
-          className="p-5"
-          style={{ borderRight: "1px solid #ccc", height: "90vh" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <h2 style={{ width: "100%", textAlign: "left" }}>Dashboard</h2>
-            <ButtonGroup vertical className="w-100">
-              <Button
-                onClick={() => setDashboardContent("todayConsults")}
-                variant={
-                  dashboardContent == "todayConsults"
-                    ? "primary"
-                    : "outline-primary"
-                }
-                className="my-3 w-100"
-              >
-                <i className="fas fa-home"></i> Consultas de hoy
-              </Button>
-              <Button
-                onClick={() => setDashboardContent("registerConsult")}
-                variant={
-                  dashboardContent == "registerConsult"
-                    ? "primary"
-                    : "outline-primary"
-                }
-                className="my-3 w-100"
-              >
-                <i className="fas fa-check"></i> Registrar consulta
-              </Button>
-              {/* <Button
+        {screenWidth > 900 && (
+          <Col md={3} className="p-5" style={{ height: "100vh" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                justifyContent: "center",
+                height: "100%",
+              }}
+            >
+              <h2 style={{ width: "100%", textAlign: "left" }}>Dashboard</h2>
+              <ButtonGroup vertical className="w-100">
+                <Button
+                  onClick={() => setDashboardContent("todayConsults")}
+                  variant={
+                    dashboardContent == "todayConsults"
+                      ? "primary"
+                      : "outline-primary"
+                  }
+                  className="my-3 w-100"
+                >
+                  <i className="fas fa-home"></i> Consultas de hoy
+                </Button>
+                <Button
+                  onClick={() => setDashboardContent("registerConsult")}
+                  variant={
+                    dashboardContent == "registerConsult"
+                      ? "primary"
+                      : "outline-primary"
+                  }
+                  className="my-3 w-100"
+                >
+                  <i className="fas fa-check"></i> Registrar consulta
+                </Button>
+                {/* <Button
                 onClick={() => setDashboardContent("addService")}
                 variant={
                   dashboardContent == "addService"
@@ -85,34 +88,40 @@ export default function Dashboard({ history }) {
               >
                 <i className="fas fa-edit"></i> Editar servicio
               </Button> */}
-              <Button
-                onClick={() => setDashboardContent("consults")}
-                variant={
-                  dashboardContent == "consults" ||
-                  dashboardContent == "editConsult"
-                    ? "primary"
-                    : "outline-primary"
-                }
-                className="my-3 w-100"
-              >
-                <i className="fas fa-list-alt"></i> Todas las consultas
-              </Button>
-              <Button
-                onClick={() => setDashboardContent("patients")}
-                variant={
-                  dashboardContent == "patients" ||
-                  dashboardContent == "editPatient"
-                    ? "primary"
-                    : "outline-primary"
-                }
-                className="my-3 w-100"
-              >
-                <i className="fas fa-list-alt"></i> Pacientes
-              </Button>
-            </ButtonGroup>
-          </div>
-        </Col>
-        <Col md={9} className="p-5">
+                <Button
+                  onClick={() => setDashboardContent("consults")}
+                  variant={
+                    dashboardContent == "consults" ||
+                    dashboardContent == "editConsult"
+                      ? "primary"
+                      : "outline-primary"
+                  }
+                  className="my-3 w-100"
+                >
+                  <i className="fas fa-list-alt"></i> Todas las consultas
+                </Button>
+                <Button
+                  onClick={() => setDashboardContent("patients")}
+                  variant={
+                    dashboardContent == "patients" ||
+                    dashboardContent == "editPatient"
+                      ? "primary"
+                      : "outline-primary"
+                  }
+                  className="my-3 w-100"
+                >
+                  <i className="fas fa-list-alt"></i> Pacientes
+                </Button>
+              </ButtonGroup>
+            </div>
+          </Col>
+        )}
+
+        <Col
+          md={screenWidth < 900 ? 12 : 9}
+          style={{ minHeight: "100vh" }}
+          className="p-5"
+        >
           <div>
             {dashboardContent == "todayConsults" && (
               <TodayConsults
@@ -174,6 +183,55 @@ export default function Dashboard({ history }) {
           </div>
         </Col>
       </Row>
+      {screenWidth < 900 && (
+        <Nav
+          className="navbar-expand-lg navbar fixed-bottom navbar-dark bg-light"
+          style={{ height: "15.5vh", borderTop: "1px solid #ccc" }}
+        >
+          <div className="d-flex flex-row navbar-light justify-content-around w-100">
+            <Nav.Item
+              style={{ cursor: "pointer" }}
+              className={`align-items-center text-center ${
+                dashboardContent == "todayConsults" && "text-primary"
+              }`}
+              onClick={() => setDashboardContent("todayConsults")}
+            >
+              <i style={{ fontSize: "35px" }} className="fas fa-home"></i>
+              <div style={{ fontSize: "13px" }}>Consultas de hoy</div>
+            </Nav.Item>
+            <Nav.Item
+              style={{ cursor: "pointer" }}
+              className={`align-items-center text-center ${
+                dashboardContent == "registerConsult" && "text-primary"
+              }`}
+              onClick={() => setDashboardContent("registerConsult")}
+            >
+              <i style={{ fontSize: "35px" }} className="fas fa-check"></i>
+              <div style={{ fontSize: "13px" }}>Registrar consulta</div>
+            </Nav.Item>
+            <Nav.Item
+              style={{ cursor: "pointer" }}
+              className={`align-items-center text-center ${
+                dashboardContent == "consults" && "text-primary"
+              }`}
+              onClick={() => setDashboardContent("consults")}
+            >
+              <i style={{ fontSize: "35px" }} className="fas fa-list-alt"></i>
+              <div style={{ fontSize: "13px" }}>Todas las consultas</div>
+            </Nav.Item>
+            <Nav.Item
+              style={{ cursor: "pointer" }}
+              className={`align-items-center text-center ${
+                dashboardContent == "patients" && "text-primary"
+              }`}
+              onClick={() => setDashboardContent("patients")}
+            >
+              <i style={{ fontSize: "35px" }} className="fas fa-users"></i>
+              <div style={{ fontSize: "13px" }}>Pacientes</div>
+            </Nav.Item>
+          </div>
+        </Nav>
+      )}
     </>
   );
 }

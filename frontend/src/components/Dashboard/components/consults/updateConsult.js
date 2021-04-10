@@ -102,7 +102,7 @@ export default function UpdateConsult(props, { history }) {
       ) : errorDetails ? (
         <Message variant="danger">{errorDetails}</Message>
       ) : (
-        <FormContainer>
+        <>
           <h1>Editar consulta</h1>
           <Form onSubmit={submitHandler}>
             <InputGroup className="mb-3">
@@ -165,7 +165,7 @@ export default function UpdateConsult(props, { history }) {
               Registrar consulta
             </Button>
           </Form>
-        </FormContainer>
+        </>
       )}
       <Modal
         size="lg"

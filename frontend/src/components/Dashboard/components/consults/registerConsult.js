@@ -59,68 +59,64 @@ export default function RegisterConsult({ history }) {
 
   return (
     <>
-      <FormContainer>
-        <h1>Registrar consulta</h1>
-        <Form onSubmit={submitHandler}>
+      <h1>Registrar consulta</h1>
+      <Form onSubmit={submitHandler}>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder={patientSelected}
+            aria-label="Paciente"
+            aria-describedby="pacientSelected"
+            readOnly={true}
+            style={{
+              backgroundColor: "white",
+              hover: { cursor: "none" },
+              cursor: "default",
+            }}
+          />
+          <InputGroup.Append>
+            <InputGroup.Text
+              id="pacientSelected"
+              style={{ marginTop: "0", cursor: "pointer" }}
+              onClick={() => setLgShow(true)}
+            >
+              Selecciona un paciente
+            </InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
+
+        <Form.Group>
+          <Form.Label>Detalles</Form.Label>
+          <Form.Control
+            as="textarea"
+            placeholder="Detalles de la consulta"
+            rows={3}
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Precio</Form.Label>
+
           <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text style={{ marginTop: "0" }}>$</InputGroup.Text>
+            </InputGroup.Prepend>
             <FormControl
-              placeholder={patientSelected}
-              aria-label="Paciente"
-              aria-describedby="pacientSelected"
-              readOnly={true}
-              style={{
-                backgroundColor: "white",
-                hover: { cursor: "none" },
-                cursor: "default",
-              }}
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
             <InputGroup.Append>
-              <InputGroup.Text
-                id="pacientSelected"
-                style={{ marginTop: "0", cursor: "pointer" }}
-                onClick={() => setLgShow(true)}
-              >
-                Selecciona un paciente
-              </InputGroup.Text>
+              <InputGroup.Text style={{ marginTop: "0" }}>.00</InputGroup.Text>
             </InputGroup.Append>
           </InputGroup>
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Detalles</Form.Label>
-            <Form.Control
-              as="textarea"
-              placeholder="Detalles de la consulta"
-              rows={3}
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Precio</Form.Label>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text style={{ marginTop: "0" }}>$</InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-              <InputGroup.Append>
-                <InputGroup.Text style={{ marginTop: "0" }}>
-                  .00
-                </InputGroup.Text>
-              </InputGroup.Append>
-            </InputGroup>
-          </Form.Group>
-
-          <Button type="submit" variant="primary">
-            Registrar consulta
-          </Button>
-        </Form>
-      </FormContainer>
+        <Button type="submit" variant="primary">
+          Registrar consulta
+        </Button>
+      </Form>
       <Modal
         size="lg"
         show={lgShow}

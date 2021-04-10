@@ -31,14 +31,14 @@ export default function Header() {
         </div>
       </Container>
       <Navbar
-        fixed={scrollPosition > 25 ? "top" : "none"}
+        fixed={scrollPosition > 100 ? "top" : "none"}
         className="navbar navbar-expand-lg navbar-light bg-light"
         collapseOnSelect
         expand="lg"
       >
         <Container>
           <Navbar.Brand>
-            {scrollPosition > 25 ? (
+            {scrollPosition > 100 ? (
               <h4>
                 <span style={{ color: "#4582ec", display: "inline" }}>
                   Dental

@@ -1,0 +1,65 @@
+.banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #333;
+  flex-direction: column;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(https://fondosmil.com/fondo/89830.jpg);
+    opacity: 0.2;
+    background-position: top center;
+  }
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: 3px;
+  }
+  h1,
+  p,
+  .banner-buttons {
+    position: relative;
+    color: #ffff;
+  }
+  .banner-buttons {
+    display: flex;
+    flex-direction: row;
+    Button:first-child {
+      margin-right: 15px;
+    }
+    Button {
+      font-size: 1rem;
+    }
+  }
+  p {
+    font-size: 1.5rem;
+  }
+}
+#main-cards {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  padding: 25px 0;
+  margin-top: -80px;
+  .mb-2:first-child {
+    margin-right: 15px;
+  }
+
+}
+@media (max-width: 800px) {
+  #main-cards {
+    flex-direction: column;
+    .mb-2:first-child {
+      margin-right: 0;
+    }
+  }
+}

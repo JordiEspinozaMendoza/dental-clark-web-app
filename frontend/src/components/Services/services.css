@@ -1,0 +1,15 @@
+.service {
+  height: 250px;
+  background-size: 100% 100%;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 5px #333;
+          box-shadow: 0 0 5px #333;
+  margin: 15px 0;
+}
+
+.service span {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+/*# sourceMappingURL=services.css.map */

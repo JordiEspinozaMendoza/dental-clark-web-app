@@ -1,0 +1,99 @@
+.banner {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 80vh;
+  background-color: #333;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(https://fondosmil.com/fondo/89830.jpg);
+  opacity: 0.2;
+  background-position: top center;
+}
+
+.banner h1 {
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.banner h1,
+.banner p,
+.banner .banner-buttons {
+  position: relative;
+  color: #ffff;
+}
+
+.banner .banner-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.banner .banner-buttons Button:first-child {
+  margin-right: 15px;
+}
+
+.banner .banner-buttons Button {
+  font-size: 1rem;
+}
+
+.banner p {
+  font-size: 1.5rem;
+}
+
+#main-cards {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 25px 0;
+  margin-top: -80px;
+}
+
+#main-cards .mb-2:first-child {
+  margin-right: 15px;
+}
+
+@media (max-width: 800px) {
+  #main-cards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #main-cards .mb-2:first-child {
+    margin-right: 0;
+  }
+}
+/*# sourceMappingURL=banner.css.map */

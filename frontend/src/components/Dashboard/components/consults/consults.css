@@ -1,0 +1,11 @@
+.patientsItems:hover {
+  background-color: rgb(243, 243, 243);
+}
+.editPerson:hover {
+  cursor: pointer;
+  color: #2fa4e7;
+}
+.paginationActive a {
+  color: #fff;
+  background-color: #2fa4e7;
+}

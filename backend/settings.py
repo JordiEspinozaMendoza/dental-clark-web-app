@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'w$msnmv-+&1-#cxna8#l-3d9+!k6812yqn8_l-52lh4t^i7#f7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','dentalclark.herokuapp.com' ]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dentalclark.herokuapp.com']
 
 
 # Application definition
@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR /'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -158,9 +158,9 @@ USE_TZ = True
 STATICFILES_DIRS = [
     BASE_DIR / 'frontend/build/static'
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 CORS_ALLOW_ALL_ORIGINS = True
 
 if os.getcwd() == '/app':
-    DEBUG = True
+    DEBUG = False

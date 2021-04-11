@@ -99,7 +99,7 @@ export const history = (type, id, page) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      `/api/consults/history/${type}/${id}/${page}`,
+      `/api/consults/history/${type}/${id}/${page}/`,
       config
     );
     dispatch({ type: CONSULT_HISTORY_SUCESS, payload: data });

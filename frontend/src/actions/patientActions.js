@@ -159,7 +159,7 @@ export const getPatientDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/patients/${id}`, config);
+    const { data } = await axios.get(`/api/patients/${id}/`, config);
     dispatch({ type: PATIENT_DETAILS_SUCESS, payload: data });
   } catch (error) {
     dispatch({

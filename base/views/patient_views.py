@@ -28,7 +28,6 @@ def getAllPatients(request):
 @permission_classes([IsAuthenticated])
 def searchPatients(request, query):
     try:
-        print(request.data)
         data = request.data
         if query == "allpatients":
             print("nothing")

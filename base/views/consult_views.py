@@ -13,8 +13,8 @@ from django.core.paginator import Paginator
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getAllConsults(request, query, page):
-    print("Get consults")
+def getAllConsults(request, query, page,token):
+    print(token)
     try:
         if query == "allconsults":
             consults = Consult.objects.all()

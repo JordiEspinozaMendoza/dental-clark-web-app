@@ -29,7 +29,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dentalclark.herokuapp.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [

@@ -72,7 +72,7 @@ export const listConsults = (dateSearch, page) => async (
       },
     };
     const { data } = await axios.get(
-      `/api/consults/getconsults/${dateSearch}/${page}`,
+      `/api/consults/getconsults/${dateSearch}/${page}/${userInfo.token}`,
       config
     );
     dispatch({ type: CONSULT_LIST_SUCESS, payload: data });

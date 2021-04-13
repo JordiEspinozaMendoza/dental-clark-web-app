@@ -28,6 +28,14 @@ import {
   consultUpdateReducer,
   consultHistoryReducer,
 } from "./reducers/consultReducers";
+
+import {
+  serviceDeleteReducer,
+  serviceDetailsReducer,
+  serviceListReducer,
+  serviceRegisterReducer,
+  serviceUpdateReducer,
+} from "./reducers/serviceReducers";
 const reducer = combineReducers({
   //Aqui irán los reducers
 
@@ -55,6 +63,13 @@ const reducer = combineReducers({
   consultDelete: consultDeleteReducer,
   consultUpdate: consultUpdateReducer,
   consultHistory: consultHistoryReducer,
+
+  //Reducers para los servicios
+  serviceUpdate: serviceUpdateReducer,
+  serviceDetails: serviceDetailsReducer,
+  serviceRegister: serviceRegisterReducer,
+  serviceList: serviceListReducer,
+  serviceDelete: serviceDeleteReducer,
 });
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))

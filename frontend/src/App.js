@@ -9,6 +9,8 @@ import ListUsersScreen from "./views/ListUsersScreen";
 import EditUserScreen from "./views/EditUserScreen";
 import ProfileScreen from "./views/ProfileScreen";
 import DashboardScreen from "./views/DashboardScreen";
+import ServicesScreen from "./views/ServicesScreen";
+import EditServiceScreen from "./views/EditServiceScreen";
 function App() {
   return (
     <Router>
@@ -24,6 +26,14 @@ function App() {
         component={EditUserScreen}
         exact
       ></Route>
+
+      <Route path="/services" component={ServicesScreen} exact></Route>
+      <Route
+        path="/services/:id/edit"
+        component={EditServiceScreen}
+        exact
+      ></Route>
+
       <Footer />
     </Router>
   );

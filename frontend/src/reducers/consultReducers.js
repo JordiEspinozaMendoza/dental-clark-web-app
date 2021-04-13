@@ -35,7 +35,9 @@ export const consultRegisterReducer = (state = {}, action) => {
     case CONSULT_REGISTER_SUCESS:
       return { loading: false, success: true };
     case CONSULT_REGISTER_FAIL:
-      return { loading: false, success: false };
+      return { loading: false, success: false, error: true };
+    case CONSULT_REGISTER_RESET:
+      return {};
     default:
       return state;
   }

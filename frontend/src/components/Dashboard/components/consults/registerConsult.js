@@ -19,7 +19,9 @@ import { searchPatients } from "../../../../actions/patientActions";
 import { register } from "../../../../actions/consultActions";
 import Loader from "../../../Loader";
 import Message from "../../../Message";
-export default function RegisterConsult({ history }) {
+import { CONSULT_REGISTER_RESET } from "../../../../constants/consultConstants";
+
+export default function RegisterConsult(props, { history }) {
   //Detalles de consulta
   const [patient, setPatient] = useState(0);
   const [details, setDetails] = useState("");
@@ -38,6 +40,9 @@ export default function RegisterConsult({ history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const consultRegister = useSelector((state) => state.consultRegister);
+  const { success, error: errorRegister } = consultRegister;
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -50,16 +55,21 @@ export default function RegisterConsult({ history }) {
     );
   };
   useEffect(() => {
+    if (success) {
+      dispatch({ type: CONSULT_REGISTER_RESET });
+      props.onChange("todayConsults");
+    }
     if (userInfo) {
       dispatch(searchPatients(patientsToSearch));
     } else {
       history.push("/");
     }
-  }, [dispatch, history, userInfo, patientsToSearch]);
+  }, [dispatch, history, userInfo, patientsToSearch, success]);
 
   return (
     <>
       <h1>Registrar consulta</h1>
+      {errorRegister && <Message variant="danger">{errorRegister}</Message>}
       <Form onSubmit={submitHandler}>
         <InputGroup className="mb-3">
           <FormControl

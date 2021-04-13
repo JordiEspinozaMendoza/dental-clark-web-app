@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -143,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Tijuana'
 
 USE_I18N = True
 
@@ -163,3 +164,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 if os.getcwd() == '/app':
     DEBUG = False
+
+cloudinary.config(
+    cloud_name='dental-clark',
+    api_key='684524466996219',
+    api_secret='bfqK9KPva7Yj0BrBwSPWkzjH63E',
+    secure=True,
+)

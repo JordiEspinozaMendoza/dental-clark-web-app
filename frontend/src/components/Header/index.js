@@ -66,6 +66,9 @@ export default function Header() {
                   <LinkContainer to="/dashboard">
                     <NavDropdown.Item>Dashboard</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/services">
+                    <NavDropdown.Item>Tratamientos</NavDropdown.Item>
+                  </LinkContainer>
                   {userInfo.isAdmin ? (
                     <>
                       <LinkContainer to="/admin/register">

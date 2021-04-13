@@ -32,7 +32,7 @@ def searchPatients(request, query):
         if query == "allpatients":
             print("nothing")
             patients = Patient.objects.all()
-            
+
             serializer = PatientSerializer(patients, many=True)
         else:
             print(query)
@@ -113,3 +113,5 @@ def deletePatient(request, pk):
     except:
         message = {'detail': 'Something bad happen'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+

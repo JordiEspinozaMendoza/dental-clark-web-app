@@ -137,7 +137,9 @@ export default function Dashboard({ history }) {
               ></TodayConsults>
             )}
             {dashboardContent == "registerConsult" && (
-              <RegisterConsult></RegisterConsult>
+              <RegisterConsult
+                onChange={(value) => setDashboardContent(value)}
+              ></RegisterConsult>
             )}
 
             {dashboardContent == "consults" && (

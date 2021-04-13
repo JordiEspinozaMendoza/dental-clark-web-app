@@ -75,7 +75,7 @@ export default function ProfileScreen({ history }) {
   }, [history, dispatch, userInfo, user, success]);
   useEffect(() => {
     dispatch(consultsHistory("user", user._id, pageToSearch));
-  }, [pageToSearch, dispatch]);
+  }, [pageToSearch, dispatch, lgShow]);
   const submitHandler = (e) => {
     e.preventDefault();
     if (password != passwordConfirm)
@@ -87,7 +87,7 @@ export default function ProfileScreen({ history }) {
   };
   return (
     <>
-      <Row className="p-5">
+      <Row className="p-5" style={{ minHeight: "100vh" }}>
         <Col md={3} className="float-left">
           <h2>Mi perfil</h2>
           {message && <Message variant="danger">{message}</Message>}

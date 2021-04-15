@@ -2,14 +2,33 @@
   height: 250px;
   background-size: 100% 100%;
   border-radius: 15px;
-  -webkit-box-shadow: 0 0 5px #333;
-          box-shadow: 0 0 5px #333;
   margin: 15px 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background-color: #333;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .service span {
   position: absolute;
-  bottom: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 30px;
+  color: white;
   text-align: center;
+  font-weight: bolder;
+  top: 70%;
+  text-shadow: 0 0 10px #333;
 }
 /*# sourceMappingURL=services.css.map */

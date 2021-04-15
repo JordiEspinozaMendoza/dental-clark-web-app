@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
+import Paginate from "../../components/Paginator";
 import { LinkContainer } from "react-router-bootstrap";
 import Message from "../../components/Message";
 import {
@@ -72,39 +73,46 @@ export default function ServicesScreen({ history }) {
       ) : services?.length == 0 ? (
         <Message variant="warning">No hay tratamientos actualmente</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {services?.map((service) => (
-              <tr key={service._id}>
-                <td>{service.name}</td>
-                <td>{service.details}</td>
-                <td>{service.price}</td>
-                <td>
-                  <LinkContainer to={`/services/${service._id}/edit`}>
-                    <Button variant="light" className="btn-sm">
-                      <i className="fas fa-edit"></i>
-                    </Button>
-                  </LinkContainer>
-                  <Button
-                    variant="danger"
-                    className="btn-sm"
-                    onClick={() => deleteServiceHandler(service._id)}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </Button>
-                </td>
+        <>
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {services?.map((service) => (
+                <tr key={service._id}>
+                  <td>{service.name}</td>
+                  <td>{service.details}</td>
+                  <td>{service.price}</td>
+                  <td>
+                    <LinkContainer to={`/services/${service._id}/edit`}>
+                      <Button variant="light" className="btn-sm">
+                        <i className="fas fa-edit"></i>
+                      </Button>
+                    </LinkContainer>
+                    <Button
+                      variant="danger"
+                      className="btn-sm"
+                      onClick={() => deleteServiceHandler(service._id)}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <Paginate
+            pages={pages}
+            changePage={(value) => setActualPage(value)}
+            pageToSearch={actualPage}
+          ></Paginate>
+        </>
       )}
     </div>
   );

@@ -161,7 +161,8 @@ export default function ProfileScreen({ history }) {
                     <th>Paciente</th>
                     <th>Fecha</th>
                     <th>Detalles / tratamiento</th>
-                    <th>Abonó</th>
+                    <th>Precio total</th>
+                    <th>Saldo pendiente</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -182,6 +183,13 @@ export default function ProfileScreen({ history }) {
                         <td>{consult.date.substring(0, 10)}</td>
                         <td>{consult.details}</td>
                         <td>$ {consult.price}</td>
+                        {consult.price - consult.payment > 0 ? (
+                          <td style={{ color: "red" }}>
+                            ${consult.price - consult.payment}
+                          </td>
+                        ) : (
+                          <td style={{ color: "green" }}>PAGO COMPLETO</td>
+                        )}
                       </tr>
                     ))}
                 </tbody>

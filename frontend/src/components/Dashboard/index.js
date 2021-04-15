@@ -163,6 +163,10 @@ export default function Dashboard({ history }) {
             )}
             {dashboardContent == "patients" && (
               <Patients
+                onChangeConsultEditId={(value, id) => {
+                  setconsultEditId(id);
+                  setDashboardContent(value);
+                }}
                 Id={patientEditId}
                 onChange={(value) => setDashboardContent(value)}
                 onChangePatientEditId={(value, id) => {

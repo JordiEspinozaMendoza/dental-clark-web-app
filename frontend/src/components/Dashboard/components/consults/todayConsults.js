@@ -74,7 +74,8 @@ export default function TodayConsults(props) {
               <th>Encargado</th>
               <th>Paciente</th>
 
-              <th>Precio</th>
+              <th>Precio total</th>
+              <th>Saldo pendiente</th>
               <th></th>
             </tr>
           </thead>
@@ -103,6 +104,13 @@ export default function TodayConsults(props) {
                   {consult.patient["name"]}
                 </td>
                 <td>$ {consult.price}</td>
+                {consult.price - consult.payment > 0 ? (
+                  <td style={{ color: "red" }}>
+                    ${consult.price - consult.payment}
+                  </td>
+                ) : (
+                  <td style={{ color: "green" }}>PAGO COMPLETO</td>
+                )}
                 <td>
                   <Button
                     variant="info"

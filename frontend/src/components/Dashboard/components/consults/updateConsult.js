@@ -30,6 +30,8 @@ export default function UpdateConsult(props, { history }) {
   const [details, setDetails] = useState("");
   const [price, setPrice] = useState(0.0);
   const consultId = props.Id;
+  const [payment, setPayment] = useState(0.0);
+
   //Fin detalles de consulta
   const [patientSelected, setPatientSelected] = useState(
     "Selecciona un paciente"
@@ -67,6 +69,7 @@ export default function UpdateConsult(props, { history }) {
         patient: Number(patient),
         price: price,
         details: details,
+        payment: payment,
       })
     );
   };
@@ -81,6 +84,7 @@ export default function UpdateConsult(props, { history }) {
       else {
         setDetails(consult.details);
         setPrice(consult.price);
+        setPayment(consult.payment);
         setPatient(consult.patient._id);
         setPatientSelected(
           consult.patient.name + " " + consult.patient.lastName
@@ -140,7 +144,7 @@ export default function UpdateConsult(props, { history }) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Precio</Form.Label>
+              <Form.Label>Precio total</Form.Label>
 
               <InputGroup className="mb-3">
                 <InputGroup.Prepend>
@@ -152,6 +156,27 @@ export default function UpdateConsult(props, { history }) {
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
+                />
+                <InputGroup.Append>
+                  <InputGroup.Text style={{ marginTop: "0" }}>
+                    .00
+                  </InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Abonó</Form.Label>
+
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text style={{ marginTop: "0" }}>
+                    $
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                  type="number"
+                  value={payment}
+                  onChange={(e) => setPayment(e.target.value)}
                 />
                 <InputGroup.Append>
                   <InputGroup.Text style={{ marginTop: "0" }}>

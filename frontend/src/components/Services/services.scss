@@ -2,12 +2,23 @@
   height: 250px;
   background-size: 100% 100%;
   border-radius: 15px;
-  box-shadow: 0 0 5px #333;
   margin: 15px 0;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #333;
+  flex-direction: column;
   span {
     position: absolute;
-    bottom: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    color: white;
     text-align: center;
-    
+    font-weight: bolder;
+    top: 70%;
+    text-shadow: 0 0 10px #333;
   }
 }

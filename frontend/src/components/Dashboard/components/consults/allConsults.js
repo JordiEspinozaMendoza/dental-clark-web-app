@@ -13,7 +13,6 @@ import moment from "moment";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import "moment/locale/es-mx";
-import { Pagination } from "react-bootstrap";
 import "./consults.css";
 import ModalConsult from "./components/modalConsult";
 
@@ -71,7 +70,7 @@ export default function Consults(props) {
   };
 
   const deleteConsultHandler = (id) => {
-    window.confirm("¿Seguro que deseas eliminar a este paciente?") &&
+    window.confirm("¿Seguro que deseas eliminar esta consult?") &&
       dispatch(consultDelete(id));
   };
 
@@ -107,7 +106,8 @@ export default function Consults(props) {
               <th>Encargado</th>
               <th>Paciente</th>
               <th>Fecha</th>
-              <th>Precio</th>
+              <th>Precio total</th>
+              <th>Saldo pendiente</th>
               <th></th>
             </tr>
           </thead>
@@ -137,6 +137,13 @@ export default function Consults(props) {
                 </td>
                 <td>{consult.date.substring(0, 10)}</td>
                 <td>$ {consult.price}</td>
+                {consult.price - consult.payment > 0 ? (
+                  <td style={{ color: "red" }}>
+                    ${consult.price - consult.payment}
+                  </td>
+                ) : (
+                  <td style={{ color: "green" }}>PAGO COMPLETO</td>
+                )}
                 <td>
                   <Button
                     variant="info"

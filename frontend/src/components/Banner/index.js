@@ -1,4 +1,5 @@
 import "./banner.css";
+import { Link } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 export default function Banner() {
   return (
@@ -7,8 +8,9 @@ export default function Banner() {
         <h1>Dental Clark</h1>
         <p>Tu sonrisa es nuestro compromiso</p>
         <div className="banner-buttons">
-          <Button variant="primary">Primary</Button>
-          <Button variant="success">Primary</Button>
+          <Link to="/treatments">
+            <Button variant="success">Ver todos los tratamientos</Button>
+          </Link>
         </div>
       </div>
 

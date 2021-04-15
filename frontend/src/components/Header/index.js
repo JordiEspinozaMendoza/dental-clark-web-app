@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, Row, Col, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 import { LinkContainer } from "react-router-bootstrap";
 import "./header.css";
 import { useState, useEffect } from "react";
@@ -23,7 +25,9 @@ export default function Header() {
     <div>
       <Container className="nav-promo">
         <h4>
-          <span>Dental</span> Clark
+          <Link to="/" id = "mainTitle">
+            <span>Dental</span> Clark
+          </Link>
         </h4>
         <div id="call-now">
           <i className="fas fa-phone-volume"></i>
@@ -31,7 +35,7 @@ export default function Header() {
         </div>
       </Container>
       <Navbar
-        fixed={scrollPosition > 100 ? "top" : "none"}
+        fixed={scrollPosition > 250 ? "top" : "none"}
         className="navbar navbar-expand-lg navbar-light bg-light"
         collapseOnSelect
         expand="lg"

@@ -1,11 +1,15 @@
-.nav-promo{
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    transition: all 300ms;
-    span{k
-        display: inline;
-        color: #4582ec;
-    }
+.nav-promo {
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  transition: all 600ms;
+  span {
+    display: inline;
+    color: #4582ec;
+  }
+}
+
+#mainTitle:hover {
+  text-decoration: none;
 }

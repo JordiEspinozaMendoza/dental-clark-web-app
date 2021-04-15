@@ -140,6 +140,7 @@ export default function EditServiceScreen({ match, history }) {
             {service?.image && (
               <Image
                 className="d-block my-4"
+                style={{maxWidth: "330px"}}
                 xs={6}
                 md={4}
                 src={`https://res.cloudinary.com/dental-clark/${service.image}`}

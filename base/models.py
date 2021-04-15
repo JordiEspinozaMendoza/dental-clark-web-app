@@ -23,6 +23,9 @@ class Consult(models.Model):
     details = models.TextField()
     price = models.DecimalField(
         max_digits=8, decimal_places=2, blank=True, null=True)
+    payment = models.DecimalField(
+        max_digits=8, decimal_places=2, blank=True, null=True)
+    
 
     _id = models.AutoField(primary_key=True, editable=False)
 

@@ -139,6 +139,7 @@ export default function Patients(props) {
         errorPatientDetails={errorPatientDetails}
         patient={patient}
         hide={() => setLgShow(false)}
+        editConsultDashboard={(id) => props.onChangeConsultEditId("editConsult", id)}
       ></ModalPatient>
     </>
   );

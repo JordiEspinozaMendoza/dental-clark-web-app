@@ -11,11 +11,13 @@ import ProfileScreen from "./views/ProfileScreen";
 import DashboardScreen from "./views/DashboardScreen";
 import ServicesScreen from "./views/ServicesScreen";
 import EditServiceScreen from "./views/EditServiceScreen";
+import AllServicesScreen from "./views/AllServicesScreen";
 function App() {
   return (
     <Router>
       <Header />
       <Route path="/" component={HomeScreen} exact></Route>
+      <Route path="/treatments" component={AllServicesScreen} exact></Route>
       <Route path="/login" component={LoginScreen} exact></Route>
       <Route path="/admin/register" component={RegisterScreen} exact></Route>
       <Route path="/admin/userlist" component={ListUsersScreen} exact></Route>

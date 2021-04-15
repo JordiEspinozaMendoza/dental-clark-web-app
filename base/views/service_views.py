@@ -15,7 +15,7 @@ from rest_framework import status
 def getServices(request, page):
     try:
         services = Service.objects.all()
-        paginator = Paginator(services, 10)
+        paginator = Paginator(services, 6)
         services = paginator.page(page)
         serializer = ServiceSerializer(services, many=True)
         return Response({'services': serializer.data, 'pages': paginator.num_pages})

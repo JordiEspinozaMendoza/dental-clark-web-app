@@ -40,14 +40,14 @@ def getAllConsults(request, query, page):
 def history(request, page, person, history):
     try:
         if history == 'patient':
-            consults = Consult.objects.filter(Patient=person)
+            consults = Consult.objects.filter(Patient=person).order_by('-date')
             paginator = Paginator(consults, 5)
             consults = paginator.page(page)
 
             serializer = ConsultSerializer(consults, many=True)
             return Response({'consults': serializer.data, 'pages': paginator.num_pages})
         else:
-            consults = Consult.objects.filter(User=person)
+            consults = Consult.objects.filter(User=person).order_by('-date')
             paginator = Paginator(consults, 5)
             consults = paginator.page(page)
 
@@ -83,7 +83,7 @@ def createConsult(request):
         user = request.user
         patient = Patient.objects.get(_id=data['patient'])
         Consult.objects.create(User=user, Patient=patient, date=datetime.now(
-        ), details=data['details'], price=data["price"])
+        ), details=data['details'], price=data["price"], payment=data['payment'])
         message = {'detail': 'Consulta creada exitosamente'}
         return Response(message, status=status.HTTP_200_OK)
     except Exception as e:
@@ -102,6 +102,8 @@ def updateConsult(request, pk):
 
         consult = Consult.objects.get(_id=pk)
         consult.details = data['details']
+        consult.price = data["price"]
+        consult.payment = data["payment"]
         consult.Patient = patient
         consult.save()
         message = {'detail': 'Consulta editada exitosamente'}

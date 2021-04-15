@@ -52,8 +52,16 @@ export default function ModalConsult({
                 </LinkContainer>
                 <h5>Detalles</h5>
                 <p>{consult.details}</p>
-                <h5>Abono</h5>
+                <h5>Precio total</h5>
                 <p>$ {consult.price}</p>
+                <h5>Saldo pendiente</h5>
+                {consult.price - consult.payment > 0 ? (
+                  <p style={{ color: "red" }}>
+                    ${consult.price - consult.payment}
+                  </p>
+                ) : (
+                  <p style={{ color: "green" }}>PAGO COMPLETO</p>
+                )}
                 <h5>Hora</h5>
                 <p className="text-capitalize">
                   {moment(consult.date).format("h:mm A")}

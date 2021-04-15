@@ -3,7 +3,12 @@ import { Modal, Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../../../Loader";
 import Message from "../../../../Message";
-import { history } from "../../../../../actions/consultActions";
+import {
+  listConsults,
+  consultDetails,
+  consultDelete,
+  history,
+} from "../../../../../actions/consultActions";
 import { LinkContainer } from "react-router-bootstrap";
 import { CONSULT_HISTORY_RESET } from "../../../../../constants/consultConstants";
 import Paginate from "../../../../Paginator";
@@ -14,7 +19,9 @@ export default function ModalPatient({
   loadingPatientDetails,
   errorPatientDetails,
   hide,
+  editConsultDashboard,
 }) {
+  console.log(editConsultDashboard);
   const dispatch = useDispatch();
   const [showHistory, setShowHistory] = useState(false);
   const userLogin = useSelector((state) => state.userLogin);
@@ -28,13 +35,24 @@ export default function ModalPatient({
     pages,
   } = consultHistory;
 
+  const consultDeleteReducer = useSelector((state) => state.consultDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = consultDeleteReducer;
+
   const historyHandler = () => {
     dispatch(history("patient", patient._id, 1));
     setShowHistory(!showHistory);
   };
+  const deleteConsultHandler = (id) => {
+    window.confirm("¿Seguro que deseas eliminar esta consulta?") &&
+      dispatch(consultDelete(id));
+  };
   useEffect(() => {
     dispatch(history("patient", patient._id, pageToSearch));
-  }, [pageToSearch, dispatch]);
+  }, [pageToSearch, dispatch, successDelete]);
   return (
     <Modal
       size="lg"
@@ -100,7 +118,9 @@ export default function ModalPatient({
                             <th>Encargado</th>
                             <th>Fecha</th>
                             <th>Detalles / tratamiento</th>
-                            <th>Abonó</th>
+                            <th>Precio total</th>
+                            <th>Saldo pendiente</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -119,6 +139,36 @@ export default function ModalPatient({
                               <td>{consult.date.substring(0, 10)}</td>
                               <td>{consult.details}</td>
                               <td>$ {consult.price}</td>
+                              {consult.price - consult.payment > 0 ? (
+                                <td style={{ color: "red" }}>
+                                  ${consult.price - consult.payment}
+                                </td>
+                              ) : (
+                                <td style={{ color: "green" }}>
+                                  PAGO COMPLETO
+                                </td>
+                              )}
+                              <td>
+                                <Button
+                                  variant="light"
+                                  className="btn-sm"
+                                  onClick={() => {
+                                    editConsultDashboard(consult._id);
+                                  }}
+                                >
+                                  <i className="fas fa-edit"></i>
+                                </Button>
+
+                                <Button
+                                  onClick={() =>
+                                    deleteConsultHandler(consult._id)
+                                  }
+                                  variant="danger"
+                                  className="btn-sm"
+                                >
+                                  <i className="fas fa-trash"></i>
+                                </Button>
+                              </td>
                             </tr>
                           ))}
                         </tbody>

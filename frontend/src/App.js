@@ -12,9 +12,12 @@ import DashboardScreen from "./views/DashboardScreen";
 import ServicesScreen from "./views/ServicesScreen";
 import EditServiceScreen from "./views/EditServiceScreen";
 import AllServicesScreen from "./views/AllServicesScreen";
+
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Route path="/" component={HomeScreen} exact></Route>
       <Route path="/treatments" component={AllServicesScreen} exact></Route>

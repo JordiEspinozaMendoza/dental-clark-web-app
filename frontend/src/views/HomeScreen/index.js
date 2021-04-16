@@ -95,14 +95,14 @@ export default function HomeScreen() {
                     <Services
                       url={`https://res.cloudinary.com/dental-clark/${service.image}`}
                       k
-                      name={"Prueba"}
+                      name={service.name}
                     />
                   </Col>
                 ))}
               </Row>
             </Col>
           </Row>
-          <Row className="p-4 bg-primary text-light">
+          {/* <Row className="p-4 bg-primary text-light">
             <Col lg={8} md={6} sm={12}>
               <h2>Agenda una cita</h2>
               <p>
@@ -132,7 +132,7 @@ export default function HomeScreen() {
                 Agenda una cita
               </Button>
             </Col>
-          </Row>
+          </Row> */}
           <div>
             <div
               className="d-flex align-items-center text-center flex-column"

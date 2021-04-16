@@ -67,7 +67,7 @@ export default function TodayConsults(props) {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : (
+      ) : consults && consults.length > 0 ? (
         <Table striped bordered hover responsive className="table-sm mt-3">
           <thead>
             <tr>
@@ -144,6 +144,8 @@ export default function TodayConsults(props) {
             ))}
           </tbody>
         </Table>
+      ) : (
+        <Message variant="info">Aún no hay visitas por el día de hoy</Message>
       )}
       <ModalConsult
         consult={myConsult}

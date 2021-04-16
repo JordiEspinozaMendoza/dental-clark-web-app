@@ -25,8 +25,9 @@ export default function Header() {
     <div>
       <Container className="nav-promo">
         <h4>
-          <Link to="/" id = "mainTitle">
-            <span>Dental</span> Clark
+          <Link to="/" id="mainTitle">
+            <i className="fas fa-tooth"> </i>
+            <span> Dental</span> Clark
           </Link>
         </h4>
         <div id="call-now">
@@ -43,12 +44,16 @@ export default function Header() {
         <Container>
           <Navbar.Brand>
             {scrollPosition > 100 ? (
-              <h4>
-                <span style={{ color: "#4582ec", display: "inline" }}>
-                  Dental
-                </span>{" "}
-                Clark
-              </h4>
+              <Link to="/" id="mainTitle">
+                <h4>
+                  <i className="fas fa-tooth"> </i>
+                  <span style={{ color: "#4582ec", display: "inline" }}>
+                    {" "}
+                    Dental
+                  </span>{" "}
+                  Clark
+                </h4>
+              </Link>
             ) : (
               ""
             )}
@@ -60,6 +65,11 @@ export default function Header() {
               <LinkContainer to="/">
                 <Nav.Link>
                   <i className="fas fa-home"></i> Inicio
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/treatments">
+                <Nav.Link>
+                  <i className="fas fa-tooth"></i> Tratamientos
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (

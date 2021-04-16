@@ -14,4 +14,3 @@ urlpatterns = [
     path('update/<str:pk>/', views.updateUser, name='user-update'),
 
 ]
- 

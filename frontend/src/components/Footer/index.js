@@ -16,7 +16,7 @@ export default function Footer() {
   }, [pathname, window.innerWidth]);
   return (
     <>
-      {pathname != "/dashboard" && screenWidth < 900 ? (
+      {pathname != "/dashboard" ? (
         <footer className="bg-dark text-light d-flex align-items-center w-100 flex-column">
           <div className="mb-4">
             <i
